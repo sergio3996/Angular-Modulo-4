@@ -10,6 +10,8 @@ import Dexie from 'dexie';
 import { StoreModule as NgRxStoreModule, ActionReducerMap, Store } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects';
 
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations'
+
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl'
 
 import { HttpClientModule, HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http'
@@ -216,7 +218,8 @@ function HttpLoaderFactory(http: HttpClient) {
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1Ijoic2VyZ2lvMzk5NiIsImEiOiJja3F0bmdvYngwZTRtMm5zYjI4dnh6MTU3In0.47qENvCQO-NF60-BbZ2V4A', // Optional, can also be set per map (accessToken input of mgl-map)
       geocoderAccessToken: 'pk.eyJ1Ijoic2VyZ2lvMzk5NiIsImEiOiJja3F0bmdvYngwZTRtMm5zYjI4dnh6MTU3In0.47qENvCQO-NF60-BbZ2V4A' // Optional, specify if different from the map access token, can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
-    })
+    }),
+    BrowserAnimationsModule,NoopAnimationsModule
   ],
   providers: [FrutasApiClient, AuthService, UsuarioLogueadoGuard,
     { provide: APP_CONFIG, useValue: APP_CONFIG_VALUE },

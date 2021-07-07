@@ -1,37 +1,54 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
 import { FrutaFavorita } from './../../models/fruta-favorita.model';
 import { Store } from "@ngrx/store"
 import { AppState } from './../../app.module';
 import { VoteDownAction, VoteUpAction } from './../../models/fruta-favorita-state.model';
+import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
   selector: 'app-fruta-favorita',
   templateUrl: './fruta-favorita.component.html',
-  styleUrls: ['./fruta-favorita.component.css']
+  styleUrls: ['./fruta-favorita.component.css'],
+  animations: [
+    trigger('esFavorito', [
+      state('estadoFavorito', style({
+        backgroundColor: 'PaleTurquoise'
+      })),
+      state('estadoNoFavorito', style({
+        backgroundColor: 'WhiteSmoke'
+      })),
+      transition('estadoNoFavorito => estadoFavorito', [
+        animate('3s')
+      ]),
+      transition('estadoFavorito => estadoNoFavorito', [
+        animate('1s')
+      ]),
+    ])
+  ]
 })
 export class FrutaFavoritaComponent implements OnInit {
   @Input() fruta!: FrutaFavorita;
   @HostBinding('attr.class') cssClass = 'col-md-4';
   @Output() clicked: EventEmitter<FrutaFavorita>;
 
-  constructor(private store: Store<AppState>) { 
+  constructor(private store: Store<AppState>) {
     this.clicked = new EventEmitter();
   }
 
   ngOnInit(): void {
   }
 
-  Ir(){
-  this.clicked.emit(this.fruta);
-  return false;
-}
+  Ir() {
+    this.clicked.emit(this.fruta);
+    return false;
+  }
 
-  voteUp(){
+  voteUp() {
     this.store.dispatch(new VoteUpAction(this.fruta))
     return false;
   }
 
-  voteDown(){
+  voteDown() {
     this.store.dispatch(new VoteDownAction(this.fruta))
     return false;
   }
