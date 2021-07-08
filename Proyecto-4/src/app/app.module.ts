@@ -36,6 +36,7 @@ import { FrutaFavorita } from './models/fruta-favorita.model';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
 import { flatMap, concatMap } from 'rxjs/operators';
+import { EspiameDirective } from './espiame.directive';
 
 
 
@@ -192,7 +193,8 @@ function HttpLoaderFactory(http: HttpClient) {
     VentasComponent,
     VentasMainComponent,
     VentasMasInfoComponent,
-    VentasDetalleComponent
+    VentasDetalleComponent,
+    EspiameDirective
   ],
   imports: [
     BrowserModule,
