@@ -5,11 +5,14 @@
   <div class="card-body">
     <h5 class="card-title text-uppercase">{{fruta.nombre}}</h5>
     <div>
-      <a href="#" (click)="voteUp()" class="material-icons md-18">thumb_up</a>
-      <a href="#" (click)="voteDown()" class="material-icons md-18">thumb_down</a>
+      <a href="#" (click)="voteUp()" class="material-icons md-18" 
+      appTrackearClick data-trackear-tags="fruta_vote_up lista_frutas_item">thumb_up</a>
+      <a href="#" (click)="voteDown()" class="material-icons md-18" 
+      appTrackearClick data-trackear-tags="fruta_vote_down lista_frutas_item">thumb_down</a>
       {{fruta.votes}}
     </div><br>
-    <a href="#" class="btn btn-secondary" (click)="Ir()">Ir!</a>
+    <a href="#" class="btn btn-secondary" (click)="Ir()"
+    appTrackearClick data-trackear-tags="fruta_elegir_preferido lista_frutas_item">Ir!</a>
     <span *ngIf="fruta.isSelected()">
       <span ngNonBindable> - PREFERIDO </span>
       </span>

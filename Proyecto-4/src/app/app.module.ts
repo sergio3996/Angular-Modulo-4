@@ -37,6 +37,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
 import { flatMap, concatMap } from 'rxjs/operators';
 import { EspiameDirective } from './espiame.directive';
+import { TrackearClickDirective } from './trackear-click.directive';
 
 
 
@@ -194,7 +195,8 @@ function HttpLoaderFactory(http: HttpClient) {
     VentasMainComponent,
     VentasMasInfoComponent,
     VentasDetalleComponent,
-    EspiameDirective
+    EspiameDirective,
+    TrackearClickDirective
   ],
   imports: [
     BrowserModule,
